@@ -531,9 +531,10 @@ ENV LARADOCK_PHALCON_VERSION ${LARADOCK_PHALCON_VERSION}
 RUN if [ $INSTALL_PHALCON = true ]; then \
     apt-get update && apt-get install -y unzip libpcre3-dev gcc make re2c \
     && curl -L -o /tmp/cphalcon.zip https://github.com/phalcon/cphalcon/archive/phalcon-v${LARADOCK_PHALCON_VERSION}.zip \
-    # && curl -L -o /tmp/cphalcon.zip https://github.com/phalcon/cphalcon/archive/phalcon-v${LARADOCK_PHALCON_VERSION}.zip \
+    # && curl -L -o /tmp/cphalcon.zip https://github.com/phalcon/cphalcon/archive/${LARADOCK_PHALCON_VERSION}.zip \
     && unzip -d /tmp/ /tmp/cphalcon.zip \
-    && cd /tmp/cphalcon-${LARADOCK_PHALCON_VERSION}/build \
+    # && cd /tmp/cphalcon-${LARADOCK_PHALCON_VERSION}/build \
+    && cd /tmp/cphalcon-phalcon-v${LARADOCK_PHALCON_VERSION}/build \
     && ./install \
 #    && echo "extension=phalcon.so" >> /etc/php/${LARADOCK_PHP_VERSION}/mods-available/phalcon.ini \
     && printf "extension=phalcon.so" > $PHP_INI_DIR/conf.d/phalcon.ini \
